@@ -10,6 +10,7 @@ class BaseGame {
         
         this.initializeElements();
         this.bindEvents();
+        this.setupKeyboardShortcuts();
     }
 
     initializeElements() {
@@ -28,6 +29,49 @@ class BaseGame {
         this.restartButton.addEventListener('click', () => this.restartGame());
         this.weekdayButtons.forEach(button => {
             button.addEventListener('click', () => this.checkAnswer(button.dataset.day));
+        });
+    }
+
+    setupKeyboardShortcuts() {
+        const weekdayMap = {
+            '1': 'Monday',
+            '2': 'Tuesday',
+            '3': 'Wednesday',
+            '4': 'Thursday',
+            '5': 'Friday',
+            '6': 'Saturday',
+            '7': 'Sunday'
+        };
+
+        document.addEventListener('keydown', (e) => {
+            // Only process if this tab is active
+            if (!this.container.closest('.tab-pane.active')) return;
+            
+            // Handle Space for starting game
+            if (e.code === 'Space' && !this.startButton.disabled) {
+                e.preventDefault();
+                this.startGame();
+                return;
+            }
+
+            // Handle R for restart
+            if (e.code === 'KeyR' && !e.ctrlKey && !e.metaKey) {
+                e.preventDefault();
+                this.restartGame();
+                return;
+            }
+
+            // Handle number keys for weekdays
+            if (weekdayMap[e.key] && !this.startButton.disabled) {
+                e.preventDefault();
+                const weekdayBtn = Array.from(this.weekdayButtons)
+                    .find(btn => btn.dataset.day === weekdayMap[e.key]);
+                if (weekdayBtn && !weekdayBtn.disabled) {
+                    this.checkAnswer(weekdayMap[e.key]);
+                    weekdayBtn.classList.add('active');
+                    setTimeout(() => weekdayBtn.classList.remove('active'), 100);
+                }
+            }
         });
     }
 

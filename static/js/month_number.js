@@ -20,6 +20,7 @@ class MonthNumberGame {
         this.currentMonth = null;
 
         this.bindEvents();
+        this.setupKeyboardShortcuts();
     }
 
     bindEvents() {
@@ -27,6 +28,44 @@ class MonthNumberGame {
         this.restartButton.addEventListener('click', () => this.restartGame());
         this.monthButtons.forEach(button => {
             button.addEventListener('click', () => this.checkAnswer(parseInt(button.dataset.month)));
+        });
+    }
+
+    setupKeyboardShortcuts() {
+        const monthMap = {
+            '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6,
+            '7': 7, '8': 8, '9': 9, '0': 10, '-': 11, '=': 12
+        };
+
+        document.addEventListener('keydown', (e) => {
+            // Only process if this tab is active
+            if (!this.container.closest('.tab-pane.active')) return;
+
+            // Handle Space for starting game
+            if (e.code === 'Space' && !this.startButton.disabled) {
+                e.preventDefault();
+                this.startGame();
+                return;
+            }
+
+            // Handle R for restart
+            if (e.code === 'KeyR' && !e.ctrlKey && !e.metaKey) {
+                e.preventDefault();
+                this.restartGame();
+                return;
+            }
+
+            // Handle number keys for months
+            if (monthMap[e.key] && !this.startButton.disabled) {
+                e.preventDefault();
+                const monthBtn = Array.from(this.monthButtons)
+                    .find(btn => parseInt(btn.dataset.month) === monthMap[e.key]);
+                if (monthBtn && !monthBtn.disabled) {
+                    this.checkAnswer(monthMap[e.key]);
+                    monthBtn.classList.add('active');
+                    setTimeout(() => monthBtn.classList.remove('active'), 100);
+                }
+            }
         });
     }
 
