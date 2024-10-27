@@ -27,6 +27,9 @@
             <li class="nav-item">
                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#month-number">Month Number</button>
             </li>
+            <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#info">Game Info</button>
+            </li>
         </ul>
 
         <div class="tab-content mt-3">
@@ -44,6 +47,9 @@
             </div>
             <div class="tab-pane fade" id="month-number">
                 {% include 'month_number.html' %}
+            </div>
+            <div class="tab-pane fade" id="info">
+                {% include 'info.html' %}
             </div>
         </div>
     </div>
