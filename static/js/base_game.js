@@ -44,11 +44,23 @@ class BaseGame {
         if (this.startTime) {
             const elapsed = (Date.now() - this.startTime) / 1000;
             this.timerDisplay.textContent = `Time: ${elapsed.toFixed(2)}s`;
-            requestAnimationFrame(() => this.updateTimer());
+            if (!this.timeLimit) {
+                requestAnimationFrame(() => this.updateTimer());
+            } else {
+                const remaining = Math.max(0, this.timeLimit - elapsed);
+                this.timerDisplay.textContent = `Time left: ${Math.round(remaining)}s`;
+                if (remaining > 0) {
+                    requestAnimationFrame(() => this.updateTimer());
+                } else {
+                    this.endGame();
+                }
+            }
         }
     }
 
     checkAnswer(userGuess) {
+        if (this.startTime === null) return;
+
         const elapsed = (Date.now() - this.guessStartTime) / 1000;
         this.totalTime += elapsed;
         this.totalGuesses++;
@@ -59,8 +71,18 @@ class BaseGame {
         this.logResult(correct, userGuess, elapsed);
         this.updateStats();
         
+        // Reset the guess timer but keep the main timer running
         this.guessStartTime = Date.now();
-        this.generateNewDate();
+        
+        if (!this.timeLimit) {
+            // For non-timed games, reset the main timer for each guess
+            this.startTime = Date.now();
+            this.updateTimer();
+            this.end_round();
+        } else {
+            // For timed games, continue with the same main timer
+            this.generateNewDate();
+        }
     }
 
     updateStats() {
@@ -88,7 +110,7 @@ class BaseGame {
         this.weekdayButtons.forEach(btn => btn.disabled = true);
         this.updateStats();
         this.resultLog.innerHTML = '';
-        this.timerDisplay.textContent = 'Time: 0.00s';
+        this.timerDisplay.textContent = this.timeLimit ? `Time left: ${this.timeLimit}s` : 'Time: 0.00s';
         this.dateDisplay.textContent = 'Date: --/--';
     }
 
@@ -99,5 +121,23 @@ class BaseGame {
 
     generateNewDate() {
         // To be implemented by child classes
+    }
+
+    end_round() {
+        this.startButton.disabled = false;
+        this.weekdayButtons.forEach(btn => btn.disabled = true);
+        if (!this.timeLimit) {
+            this.startTime = null;
+            this.guessStartTime = null;
+            this.timerDisplay.textContent = 'Time: 0.00s';
+        }
+    }
+
+    endGame() {
+        this.end_round();
+        const accuracy = (this.correctGuesses / this.totalGuesses) * 100;
+        const avgTime = this.totalTime / this.totalGuesses;
+        alert(`Game Over!\nTotal Correct: ${this.correctGuesses}\nAccuracy: ${accuracy.toFixed(2)}%\nAverage Time: ${avgTime.toFixed(2)}s`);
+        this.startTime = null;
     }
 }
