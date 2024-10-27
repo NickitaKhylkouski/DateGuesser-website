@@ -43,8 +43,8 @@ class BaseGame {
     updateTimer() {
         if (this.startTime) {
             const elapsed = (Date.now() - this.startTime) / 1000;
-            this.timerDisplay.textContent = `Time: ${elapsed.toFixed(2)}s`;
             if (!this.timeLimit) {
+                this.timerDisplay.textContent = `Time: ${elapsed.toFixed(2)}s`;
                 requestAnimationFrame(() => this.updateTimer());
             } else {
                 const remaining = Math.max(0, this.timeLimit - elapsed);
@@ -59,7 +59,7 @@ class BaseGame {
     }
 
     checkAnswer(userGuess) {
-        if (this.startTime === null) return;
+        if (!this.currentDate) return;
 
         const elapsed = (Date.now() - this.guessStartTime) / 1000;
         this.totalTime += elapsed;
@@ -70,19 +70,10 @@ class BaseGame {
 
         this.logResult(correct, userGuess, elapsed);
         this.updateStats();
-        
-        // Reset the guess timer but keep the main timer running
+
+        // Reset only the guess timer and generate new date
         this.guessStartTime = Date.now();
-        
-        if (!this.timeLimit) {
-            // For non-timed games, reset the main timer for each guess
-            this.startTime = Date.now();
-            this.updateTimer();
-            this.end_round();
-        } else {
-            // For timed games, continue with the same main timer
-            this.generateNewDate();
-        }
+        this.generateNewDate();
     }
 
     updateStats() {
@@ -123,21 +114,13 @@ class BaseGame {
         // To be implemented by child classes
     }
 
-    end_round() {
-        this.startButton.disabled = false;
-        this.weekdayButtons.forEach(btn => btn.disabled = true);
-        if (!this.timeLimit) {
-            this.startTime = null;
-            this.guessStartTime = null;
-            this.timerDisplay.textContent = 'Time: 0.00s';
-        }
-    }
-
     endGame() {
-        this.end_round();
+        this.weekdayButtons.forEach(btn => btn.disabled = true);
+        this.startButton.disabled = false;
         const accuracy = (this.correctGuesses / this.totalGuesses) * 100;
         const avgTime = this.totalTime / this.totalGuesses;
         alert(`Game Over!\nTotal Correct: ${this.correctGuesses}\nAccuracy: ${accuracy.toFixed(2)}%\nAverage Time: ${avgTime.toFixed(2)}s`);
         this.startTime = null;
+        this.currentDate = null;
     }
 }

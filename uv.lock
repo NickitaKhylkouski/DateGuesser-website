@@ -257,6 +257,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
+    { name = "backports-zoneinfo", marker = "python_full_version < '3.9'" },
     { name = "email-validator", specifier = ">=2.2.0" },
     { name = "flask", specifier = ">=3.0.3" },
     { name = "flask-sqlalchemy", specifier = ">=3.1.1" },

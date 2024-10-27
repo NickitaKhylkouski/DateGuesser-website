@@ -1,6 +1,7 @@
 from flask import Flask, render_template, jsonify
 import random
-from datetime import date, timedelta, datetime, timezone
+from datetime import date, timedelta, datetime
+from zoneinfo import ZoneInfo
 
 app = Flask(__name__)
 
@@ -10,11 +11,14 @@ def index():
 
 @app.route('/api/random_date/<int:year>')
 def get_random_date(year):
-    start_date = datetime(year, 1, 1, tzinfo=timezone.utc)
-    end_date = datetime(year, 12, 31, tzinfo=timezone.utc)
+    # Use local time (EST) instead of UTC
+    local_tz = ZoneInfo("America/New_York")
+    start_date = datetime(year, 1, 1, tzinfo=local_tz)
+    end_date = datetime(year, 12, 31, tzinfo=local_tz)
     days_between = (end_date - start_date).days
     random_days = random.randint(0, days_between)
     random_date = start_date + timedelta(days=random_days)
+    # Return date in local time
     return jsonify({
         'date': random_date.strftime('%Y-%m-%d'),
         'weekday': random_date.strftime('%A')
@@ -22,8 +26,9 @@ def get_random_date(year):
 
 @app.route('/api/random_date/<int:start_year>/<int:end_year>')
 def get_random_date_range(start_year, end_year):
-    start_date = datetime(start_year, 1, 1, tzinfo=timezone.utc)
-    end_date = datetime(end_year, 12, 31, tzinfo=timezone.utc)
+    local_tz = ZoneInfo("America/New_York")
+    start_date = datetime(start_year, 1, 1, tzinfo=local_tz)
+    end_date = datetime(end_year, 12, 31, tzinfo=local_tz)
     days_between = (end_date - start_date).days
     random_days = random.randint(0, days_between)
     random_date = start_date + timedelta(days=random_days)
@@ -35,7 +40,8 @@ def get_random_date_range(start_year, end_year):
 @app.route('/api/random_month')
 def get_random_month():
     month = random.randint(1, 12)
-    month_date = datetime(2000, month, 1, tzinfo=timezone.utc)
+    local_tz = ZoneInfo("America/New_York")
+    month_date = datetime(2000, month, 1, tzinfo=local_tz)
     return jsonify({
         'month': month,
         'month_name': month_date.strftime('%B')
