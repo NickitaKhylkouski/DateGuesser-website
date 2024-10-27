@@ -18,9 +18,11 @@ def get_random_date(year):
     days_between = (end_date - start_date).days
     random_days = random.randint(0, days_between)
     random_date = start_date + timedelta(days=random_days)
+    weekday_index = random_date.weekday()
+    adjusted_index = (weekday_index - 1) % 7  # Subtract 1 day and handle Monday -> Sunday case
     return jsonify({
         'date': random_date.strftime('%Y-%m-%d'),
-        'weekday': WEEKDAYS[random_date.weekday()]
+        'weekday': WEEKDAYS[adjusted_index]
     })
 
 @app.route('/api/random_date/<int:start_year>/<int:end_year>')
@@ -30,9 +32,11 @@ def get_random_date_range(start_year, end_year):
     days_between = (end_date - start_date).days
     random_days = random.randint(0, days_between)
     random_date = start_date + timedelta(days=random_days)
+    weekday_index = random_date.weekday()
+    adjusted_index = (weekday_index - 1) % 7  # Subtract 1 day and handle Monday -> Sunday case
     return jsonify({
         'date': random_date.strftime('%Y-%m-%d'),
-        'weekday': WEEKDAYS[random_date.weekday()]
+        'weekday': WEEKDAYS[adjusted_index]
     })
 
 @app.route('/api/random_month')
