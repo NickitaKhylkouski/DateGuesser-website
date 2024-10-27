@@ -56,11 +56,11 @@ class MonthNumberGame {
             }
 
             // Handle number keys for months
-            if (monthMap[e.key] && !this.startButton.disabled) {
+            if (monthMap[e.key] && this.startTime !== null) {
                 e.preventDefault();
                 const monthBtn = Array.from(this.monthButtons)
                     .find(btn => parseInt(btn.dataset.month) === monthMap[e.key]);
-                if (monthBtn && !monthBtn.disabled) {
+                if (monthBtn) {
                     this.checkAnswer(monthMap[e.key]);
                     monthBtn.classList.add('active');
                     setTimeout(() => monthBtn.classList.remove('active'), 100);

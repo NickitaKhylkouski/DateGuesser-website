@@ -62,11 +62,11 @@ class BaseGame {
             }
 
             // Handle number keys for weekdays
-            if (weekdayMap[e.key] && !this.startButton.disabled) {
+            if (weekdayMap[e.key] && this.startTime !== null) {
                 e.preventDefault();
                 const weekdayBtn = Array.from(this.weekdayButtons)
                     .find(btn => btn.dataset.day === weekdayMap[e.key]);
-                if (weekdayBtn && !weekdayBtn.disabled) {
+                if (weekdayBtn) {
                     this.checkAnswer(weekdayMap[e.key]);
                     weekdayBtn.classList.add('active');
                     setTimeout(() => weekdayBtn.classList.remove('active'), 100);
