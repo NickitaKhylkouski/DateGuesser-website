@@ -142,6 +142,3 @@ The Doomsday Algorithm uses anchor days and patterns to quickly determine weekda
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## License
-
-This project is open source and available under the MIT License.
