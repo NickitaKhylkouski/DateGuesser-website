@@ -32,3 +32,19 @@
     margin: 0;
     font-size: 2rem;
 }
+
+/* Bootstrap Icons in dark mode */
+[data-bs-theme="dark"] .bi {
+    color: var(--bs-light);
+}
+
+/* Card headers with icons */
+.card-header .bi {
+    font-size: 1.2rem;
+    vertical-align: text-bottom;
+}
+
+/* Success icon color override */
+.bi-check-circle-fill.text-success {
+    color: var(--bs-success) !important;
+}

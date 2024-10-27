@@ -1,160 +1,215 @@
 <div class="container py-4">
-    <h1 class="mb-4">Game Information & Features</h1>
+    <h1 class="mb-4 text-center">Game Guide & Features</h1>
 
-    <div class="accordion" id="gameInfo">
-        <!-- Overview -->
-        <div class="accordion-item">
-            <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#overview">
-                    Overview
-                </button>
-            </h2>
-            <div id="overview" class="accordion-collapse collapse show" data-bs-parent="#gameInfo">
-                <div class="accordion-body">
-                    <p>The Weekday Guessing Game is a fun and educational tool to help you practice mental date calculation skills. The game offers multiple modes to challenge yourself and improve your ability to determine the day of the week for any given date.</p>
-                    <h5>Keyboard Shortcuts</h5>
-                    <ul>
-                        <li><kbd>Space</kbd> - Start game</li>
-                        <li><kbd>R</kbd> - Restart game</li>
-                        <li><kbd>1-7</kbd> - Select weekday (Monday through Sunday)</li>
-                        <li><kbd>1-9,0,-,=</kbd> - Select month number (1-12) in Month Number game</li>
+    <!-- Quick Reference Card -->
+    <div class="card mb-4">
+        <div class="card-header bg-primary">
+            <h2 class="h4 mb-0"><i class="bi bi-keyboard-fill me-2"></i>Quick Reference: Keyboard Shortcuts</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Game Controls</h5>
+                    <ul class="list-unstyled">
+                        <li><kbd>Space</kbd> Start game</li>
+                        <li><kbd>R</kbd> Restart game</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h5>Answer Keys</h5>
+                    <ul class="list-unstyled">
+                        <li><kbd>1</kbd>-<kbd>7</kbd> Select weekday (Monday-Sunday)</li>
+                        <li><kbd>1</kbd>-<kbd>9</kbd>,<kbd>0</kbd>,<kbd>-</kbd>,<kbd>=</kbd> Select month (1-12)</li>
                     </ul>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Current Year Game -->
-        <div class="accordion-item">
-            <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#currentYear">
-                    Current Year Game
-                </button>
-            </h2>
-            <div id="currentYear" class="accordion-collapse collapse" data-bs-parent="#gameInfo">
-                <div class="accordion-body">
-                    <p>Practice determining weekdays for dates in the current year. This mode is perfect for beginners as it:</p>
-                    <ul>
-                        <li>Only shows month and day (year is fixed to current year)</li>
-                        <li>Allows unlimited time per guess</li>
-                        <li>Tracks accuracy and average response time</li>
-                    </ul>
-                    <p>This mode helps you build fundamental pattern recognition for dates within a single year.</p>
-                </div>
-            </div>
+    <!-- Game Overview -->
+    <div class="card mb-4">
+        <div class="card-header bg-info">
+            <h2 class="h4 mb-0"><i class="bi bi-info-circle-fill me-2"></i>Game Overview</h2>
         </div>
+        <div class="card-body">
+            <p class="lead">The Weekday Guessing Game helps you master the art of mental date calculations through various engaging game modes. Whether you're a beginner or an expert, there's a challenge for everyone!</p>
+        </div>
+    </div>
 
-        <!-- Custom Year Range -->
-        <div class="accordion-item">
-            <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#customYear">
-                    Custom Year Range Game
-                </button>
-            </h2>
-            <div id="customYear" class="accordion-collapse collapse" data-bs-parent="#gameInfo">
-                <div class="accordion-body">
-                    <p>Challenge yourself with dates from any year between 1700 and 2100. Features include:</p>
+    <!-- Game Modes Section -->
+    <h2 class="h3 mb-4"><i class="bi bi-controller me-2"></i>Game Modes</h2>
+
+    <!-- Current Year Game -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3 class="h5 mb-0"><i class="bi bi-calendar-event me-2"></i>Current Year Game</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-8">
+                    <p>Perfect for beginners! Practice with dates from the current year only.</p>
+                    <h6>Features:</h6>
                     <ul>
-                        <li>Customizable year range selection</li>
-                        <li>Full date display (month/day/year)</li>
+                        <li>Month and day only display (year is fixed)</li>
                         <li>Unlimited time per guess</li>
-                        <li>Great for practicing century calculations</li>
+                        <li>Performance tracking (accuracy & speed)</li>
                     </ul>
+                </div>
+                <div class="col-md-4">
+                    <div class="alert alert-info">
+                        <strong>Pro Tip:</strong> Start here to build your foundational skills!
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Doomsday Game -->
-        <div class="accordion-item">
-            <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#doomsday">
-                    Doomsday Algorithm Game
-                </button>
-            </h2>
-            <div id="doomsday" class="accordion-collapse collapse" data-bs-parent="#gameInfo">
-                <div class="accordion-body">
-                    <p>Practice the Doomsday Algorithm by determining the anchor day for any year. This mode:</p>
+    <!-- Custom Year Range -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3 class="h5 mb-0"><i class="bi bi-calendar-range me-2"></i>Custom Year Range Game</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-8">
+                    <p>Challenge yourself with dates from any year between 1700 and 2100!</p>
+                    <h6>Features:</h6>
                     <ul>
-                        <li>Shows only the year</li>
-                        <li>Helps master the century anchor days</li>
-                        <li>Builds speed in year calculations</li>
+                        <li>Adjustable year range</li>
+                        <li>Complete date display</li>
+                        <li>Great for century calculation practice</li>
                     </ul>
-                    <h5>Century Anchor Days:</h5>
-                    <ul>
-                        <li>1700s: Sunday</li>
-                        <li>1800s: Friday</li>
-                        <li>1900s: Wednesday</li>
-                        <li>2000s: Tuesday</li>
-                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <div class="alert alert-info">
+                        <strong>Pro Tip:</strong> Practice with smaller ranges first!
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Date Rush -->
-        <div class="accordion-item">
-            <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dateRush">
-                    Date Rush Game
-                </button>
-            </h2>
-            <div id="dateRush" class="accordion-collapse collapse" data-bs-parent="#gameInfo">
-                <div class="accordion-body">
-                    <p>A fast-paced challenge to test your speed and accuracy. Features:</p>
+    <!-- Doomsday Algorithm -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3 class="h5 mb-0"><i class="bi bi-calendar-check me-2"></i>Doomsday Algorithm Game</h3>
+        </div>
+        <div class="card-body">
+            <h5>The Algorithm Explained</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <h6>Century Anchors:</h6>
+                    <table class="table table-sm">
+                        <tr><td>1700s:</td><td>Sunday (0)</td></tr>
+                        <td>1800s:</td><td>Friday (5)</td></tr>
+                        <td>1900s:</td><td>Wednesday (3)</td></tr>
+                        <td>2000s:</td><td>Tuesday (2)</td></tr>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <h6>Doomsday Dates:</h6>
+                    <ul>
+                        <li>4/4, 6/6, 8/8, 10/10, 12/12</li>
+                        <li>5/9, 9/5, 7/11, 11/7</li>
+                        <li>Last day of February</li>
+                        <li>Leap years: 1/11, 2/22</li>
+                        <li>Non-leap years: 1/10, 2/21</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="alert alert-success mt-3">
+                <h6>Quick Algorithm Steps:</h6>
+                <ol>
+                    <li>Find century's anchor day</li>
+                    <li>Calculate year's contribution:
+                        <ul>
+                            <li>Divide last 2 digits by 12 (get quotient and remainder)</li>
+                            <li>Add quotient + remainder + ⌊remainder/4⌋</li>
+                        </ul>
+                    </li>
+                    <li>Add to anchor day and take modulo 7</li>
+                    <li>Count from nearest doomsday date</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Date Rush -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3 class="h5 mb-0"><i class="bi bi-stopwatch me-2"></i>Date Rush Game</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-8">
+                    <p>Test your speed and accuracy under pressure!</p>
+                    <h6>Features:</h6>
                     <ul>
                         <li>60-second time limit</li>
                         <li>Rapid-fire date calculations</li>
-                        <li>Score tracking for correct answers</li>
-                        <li>Available in both current year and custom year range modes</li>
+                        <li>Available in current year and custom range modes</li>
+                        <li>Score tracking for speed and accuracy</li>
                     </ul>
-                    <p>Perfect for testing and improving your calculation speed!</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="alert alert-warning">
+                        <strong>Challenge:</strong> Try to beat your high score!
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Month Number Game -->
-        <div class="accordion-item">
-            <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#monthNumber">
-                    Month Number Game
-                </button>
-            </h2>
-            <div id="monthNumber" class="accordion-collapse collapse" data-bs-parent="#gameInfo">
-                <div class="accordion-body">
-                    <p>Practice associating month names with their numbers. Features:</p>
+    <!-- Month Number Game -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3 class="h5 mb-0"><i class="bi bi-123 me-2"></i>Month Number Game</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-8">
+                    <p>Master month-to-number associations quickly!</p>
+                    <h6>Features:</h6>
                     <ul>
                         <li>60-second time limit</li>
-                        <li>Shows month names, guess their numbers</li>
-                        <li>Keyboard shortcuts (1-9,0,-,= for months 1-12)</li>
-                        <li>Great for building quick month recognition</li>
+                        <li>Month name to number conversion</li>
+                        <li>Quick keyboard input (1-12)</li>
                     </ul>
+                </div>
+                <div class="col-md-4">
+                    <div class="alert alert-info">
+                        <strong>Tip:</strong> Use the number pad for faster input!
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Tips and Strategies -->
-        <div class="accordion-item">
-            <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tips">
-                    Tips & Strategies
-                </button>
-            </h2>
-            <div id="tips" class="accordion-collapse collapse" data-bs-parent="#gameInfo">
-                <div class="accordion-body">
-                    <h5>General Tips:</h5>
-                    <ul>
-                        <li>Start with the Current Year game to build confidence</li>
-                        <li>Use keyboard shortcuts to improve your speed</li>
-                        <li>Practice the Doomsday Algorithm basics before attempting custom year ranges</li>
-                        <li>Pay attention to your average response times and try to improve them</li>
-                    </ul>
-                    
-                    <h5>Learning Path:</h5>
-                    <ol>
-                        <li>Master the Month Number game first</li>
-                        <li>Practice Current Year mode until comfortable</li>
-                        <li>Learn the Doomsday Algorithm basics</li>
-                        <li>Challenge yourself with Custom Year Range</li>
-                        <li>Test your speed with Date Rush</li>
+    <!-- Learning Strategy -->
+    <div class="card mb-4">
+        <div class="card-header bg-success">
+            <h3 class="h4 mb-0"><i class="bi bi-mortarboard-fill me-2"></i>Learning Strategy</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Recommended Learning Path</h5>
+                    <ol class="list-group list-group-numbered mb-3">
+                        <li class="list-group-item">Master Month Numbers</li>
+                        <li class="list-group-item">Practice Current Year dates</li>
+                        <li class="list-group-item">Learn Doomsday Algorithm basics</li>
+                        <li class="list-group-item">Expand to Custom Year Range</li>
+                        <li class="list-group-item">Challenge yourself with Date Rush</li>
                     </ol>
+                </div>
+                <div class="col-md-6">
+                    <h5>Pro Tips</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i>Use keyboard shortcuts</li>
+                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i>Practice mental arithmetic</li>
+                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i>Focus on accuracy before speed</li>
+                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i>Learn patterns within months</li>
+                    </ul>
                 </div>
             </div>
         </div>
