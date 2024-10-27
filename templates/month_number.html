@@ -1,0 +1,44 @@
+<div class="game-container">
+    <h2 class="mb-3">Month Number Game</h2>
+    <div class="date-display mb-3">
+        <h3 id="current-month" class="text-center">Month: ----</h3>
+        <p id="timer" class="text-center">Time left: 60s</p>
+    </div>
+
+    <div class="month-buttons d-flex justify-content-center gap-2 flex-wrap mb-3">
+        <div class="row g-2">
+            <div class="col"><button class="btn btn-secondary month-btn" data-month="1">1</button></div>
+            <div class="col"><button class="btn btn-secondary month-btn" data-month="2">2</button></div>
+            <div class="col"><button class="btn btn-secondary month-btn" data-month="3">3</button></div>
+            <div class="col"><button class="btn btn-secondary month-btn" data-month="4">4</button></div>
+        </div>
+        <div class="row g-2">
+            <div class="col"><button class="btn btn-secondary month-btn" data-month="5">5</button></div>
+            <div class="col"><button class="btn btn-secondary month-btn" data-month="6">6</button></div>
+            <div class="col"><button class="btn btn-secondary month-btn" data-month="7">7</button></div>
+            <div class="col"><button class="btn btn-secondary month-btn" data-month="8">8</button></div>
+        </div>
+        <div class="row g-2">
+            <div class="col"><button class="btn btn-secondary month-btn" data-month="9">9</button></div>
+            <div class="col"><button class="btn btn-secondary month-btn" data-month="10">10</button></div>
+            <div class="col"><button class="btn btn-secondary month-btn" data-month="11">11</button></div>
+            <div class="col"><button class="btn btn-secondary month-btn" data-month="12">12</button></div>
+        </div>
+    </div>
+
+    <div class="text-center mb-3">
+        <button id="start-game" class="btn btn-primary me-2">Start Game</button>
+        <button id="restart-game" class="btn btn-secondary">Restart Game</button>
+    </div>
+
+    <div class="stats mb-3">
+        <p id="accuracy">Accuracy: 0.00%</p>
+        <p id="avg-time">Avg Time: 0.00s</p>
+        <p id="total-correct">Total Correct: 0</p>
+    </div>
+
+    <div class="results">
+        <div id="result-log" class="border rounded p-3" style="height: 200px; overflow-y: auto;">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="game-container">
+    <h2 class="mb-3">Current Year Game</h2>
+    <div class="date-display mb-3">
+        <h3 id="current-date" class="text-center">Date: --/--</h3>
+        <p id="timer" class="text-center">Time: 0.00s</p>
+    </div>
+
+    <div class="weekday-buttons d-flex justify-content-center gap-2 flex-wrap mb-3">
+        <button class="btn btn-secondary weekday-btn" data-day="Monday">Monday</button>
+        <button class="btn btn-secondary weekday-btn" data-day="Tuesday">Tuesday</button>
+        <button class="btn btn-secondary weekday-btn" data-day="Wednesday">Wednesday</button>
+        <button class="btn btn-secondary weekday-btn" data-day="Thursday">Thursday</button>
+        <button class="btn btn-secondary weekday-btn" data-day="Friday">Friday</button>
+        <button class="btn btn-secondary weekday-btn" data-day="Saturday">Saturday</button>
+        <button class="btn btn-secondary weekday-btn" data-day="Sunday">Sunday</button>
+    </div>
+
+    <div class="text-center mb-3">
+        <button id="start-game" class="btn btn-primary me-2">Start Game</button>
+        <button id="restart-game" class="btn btn-secondary">Restart Game</button>
+    </div>
+
+    <div class="stats mb-3">
+        <p id="accuracy">Accuracy: 0.00%</p>
+        <p id="avg-time">Avg Time: 0.00s</p>
+    </div>
+
+    <div class="results">
+        <div id="result-log" class="border rounded p-3" style="height: 200px; overflow-y: auto;">
+        </div>
+    </div>
+</div>
